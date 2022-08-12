@@ -15,6 +15,7 @@
 #include "OmegaSettings.h"
 #include "Gameplay/OmegaGameplayModule.h"
 #include "Kismet/KismetMathLibrary.h"
+#include "Save/OmegaSaveCondition.h"
 
 void UOmegaSaveSubsystem::Initialize(FSubsystemCollectionBase& Colection)
 {
@@ -278,93 +279,120 @@ TArray<UPrimaryDataAsset*> UOmegaSaveSubsystem::GetCollectedDataAssetsWithTags(F
 // Soft Properties
 //////////////
 
-void UOmegaSaveSubsystem::SetSoftProperty_Bool(FName Property, bool Value, bool bGlobal)
+void UOmegaSaveSubsystem::SetSoftProperty_Bool(const FString& Property, bool Value, bool bGlobal)
 {
 	GetSaveObject(bGlobal)->SetSaveProperty_Bool(Property, Value);
 }
 
-bool UOmegaSaveSubsystem::GetSoftProperty_Bool(FName Property, bool bGlobal)
+bool UOmegaSaveSubsystem::GetSoftProperty_Bool(const FString& Property, bool bGlobal)
 {
 	return GetSaveObject(bGlobal)->GetSaveProperty_Bool(Property);
 }
 
-void UOmegaSaveSubsystem::SetSoftProperty_Float(FName Property, float Value, bool bGlobal)
+void UOmegaSaveSubsystem::SetSoftProperty_Float(const FString& Property, float Value, bool bGlobal)
 {
 	GetSaveObject(bGlobal)->SetSaveProperty_Float(Property, Value);
 }
 
-float UOmegaSaveSubsystem::GetSoftProperty_Float(FName Property, bool bGlobal)
+float UOmegaSaveSubsystem::GetSoftProperty_Float(const FString& Property, bool bGlobal)
 {
 	return GetSaveObject(bGlobal)->GetSaveProperty_Float(Property);
 }
 
-void UOmegaSaveSubsystem::SetSoftProperty_Int32(FName Property, int32 Value, bool bGlobal)
+void UOmegaSaveSubsystem::SetSoftProperty_Int32(const FString& Property, int32 Value, bool bGlobal)
 {
 	GetSaveObject(bGlobal)->SetSaveProperty_Int(Property, Value);
 }
 
-int32 UOmegaSaveSubsystem::GetSoftProperty_Int32(FName Property, bool bGlobal)
+int32 UOmegaSaveSubsystem::GetSoftProperty_Int32(const FString& Property, bool bGlobal)
 {
 	return GetSaveObject(bGlobal)->GetSaveProperty_Int(Property);
 }
 
-void UOmegaSaveSubsystem::SetSoftProperty_String(FName Property, FString Value, bool bGlobal)
+void UOmegaSaveSubsystem::SetSoftProperty_String(const FString& Property, FString Value, bool bGlobal)
 {
 	GetSaveObject(bGlobal)->SetSaveProperty_String(Property, Value);
 }
 
-FString UOmegaSaveSubsystem::GetSoftProperty_String(FName Property, bool bGlobal)
+FString UOmegaSaveSubsystem::GetSoftProperty_String(const FString& Property, bool bGlobal)
 {
 	return GetSaveObject(bGlobal)->GetSaveProperty_String(Property);;
 }
 
-void UOmegaSaveSubsystem::SetSoftProperty_Tag(FName Property, FGameplayTag Value, bool bGlobal)
+void UOmegaSaveSubsystem::SetSoftProperty_Tag(const FString& Property, FGameplayTag Value, bool bGlobal)
 {
 	GetSaveObject(bGlobal)->SetSaveProperty_Tag(Property, Value);
 }
 
-FGameplayTag UOmegaSaveSubsystem::GetSoftProperty_Tag(FName Property, bool bGlobal)
+FGameplayTag UOmegaSaveSubsystem::GetSoftProperty_Tag(const FString& Property, bool bGlobal)
 {
 	return GetSaveObject(bGlobal)->GetSaveProperty_Tag(Property);;
 }
 
-void UOmegaSaveSubsystem::SetSoftProperty_Vector(FName Property, FVector Value, bool bGlobal)
+void UOmegaSaveSubsystem::SetSoftProperty_Vector(const FString& Property, FVector Value, bool bGlobal)
 {
 	GetSaveObject(bGlobal)->SetSaveProperty_Vector(Property, Value);
 }
 
-FVector UOmegaSaveSubsystem::GetSoftProperty_Vector(FName Property, bool bGlobal)
+FVector UOmegaSaveSubsystem::GetSoftProperty_Vector(const FString& Property, bool bGlobal)
 {
 	return GetSaveObject(bGlobal)->GetSaveProperty_Vector(Property);
 }
 
-void UOmegaSaveSubsystem::SetSoftProperty_Rotator(FName Property, FRotator Value, bool bGlobal)
+void UOmegaSaveSubsystem::SetSoftProperty_Rotator(const FString& Property, FRotator Value, bool bGlobal)
 {
 	GetSaveObject(bGlobal)->SetSaveProperty_Rotator(Property, Value);
 }
 
-FRotator UOmegaSaveSubsystem::GetSoftProperty_Rotator(FName Property, bool bGlobal)
+FRotator UOmegaSaveSubsystem::GetSoftProperty_Rotator(const FString& Property, bool bGlobal)
 {
 	return GetSaveObject(bGlobal)->GetSaveProperty_Rotator(Property);
 }
 
-void UOmegaSaveSubsystem::SetSoftProperty_Transform(FName Property, FTransform Value, bool bGlobal)
+void UOmegaSaveSubsystem::SetSoftProperty_Transform(const FString& Property, FTransform Value, bool bGlobal)
 {
 	GetSaveObject(bGlobal)->SetSaveProperty_Transform(Property, Value);
 }
 
-FTransform UOmegaSaveSubsystem::GetSoftProperty_Transform(FName Property, bool bGlobal)
+FTransform UOmegaSaveSubsystem::GetSoftProperty_Transform(const FString& Property, bool bGlobal)
 {
 	return GetSaveObject(bGlobal)->GetSaveProperty_Transform(Property);
 }
 
-void UOmegaSaveSubsystem::SetSoftProperty_DataAsset(FName Property, UPrimaryDataAsset* Value, bool bGlobal)
+void UOmegaSaveSubsystem::SetSoftProperty_DataAsset(const FString& Property, UPrimaryDataAsset* Value, bool bGlobal)
 {
 	GetSaveObject(bGlobal)->SetSaveProperty_Asset(Property, Value);
 }
 
-UPrimaryDataAsset* UOmegaSaveSubsystem::GetSoftProperty_DataAsset(FName Property, bool bGlobal)
+UPrimaryDataAsset* UOmegaSaveSubsystem::GetSoftProperty_DataAsset(const FString& Property, bool bGlobal)
 {
 	return GetSaveObject(bGlobal)->GetSaveProperty_Asset(Property);
+}
+
+bool UOmegaSaveSubsystem::CustomSaveConditionsMet(FOmegaSaveConditions Conditions)
+{
+	if(Conditions.CheckType == EBoolType::BoolType_And)
+	{
+		for(UOmegaSaveCondition* TempCondition : Conditions.Conditions)
+		{
+			if(!TempCondition || !TempCondition->CheckSaveCondition(this))
+			{
+				return false;
+			}
+		}
+	}
+	else
+	{
+		for(UOmegaSaveCondition* TempCondition : Conditions.Conditions)
+		{
+			if(TempCondition && TempCondition->CheckSaveCondition(this))
+			{
+				return true;
+			}
+			return false;
+		}
+	}
+	
+	return true;
 }
 
