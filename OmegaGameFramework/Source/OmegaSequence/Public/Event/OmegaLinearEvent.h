@@ -37,11 +37,10 @@ public:
 	///FUNCTIONS
 	///
 	UFUNCTION()
-	void Native_Begin();
-
+	virtual void Native_Begin();
+	
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnEventBegin();
-	
 	UFUNCTION(BlueprintImplementableEvent)
 	void OnEventEnd(const FString& Flag);
 	

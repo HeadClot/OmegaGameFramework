@@ -4,13 +4,14 @@
 
 #include "CoreMinimal.h"
 #include "Nodes/FlowNode.h"
+#include "Save/OmegaSaveSubsystem.h"
 #include "UObject/Object.h"
 #include "FlowNode_SaveCondition.generated.h"
 
 /**
  * 
  */
-UCLASS()
+UCLASS(DisplayName="Save Condition Check")
 class OMEGADEMO_API UFlowNode_SaveCondition : public UFlowNode
 {
 	GENERATED_BODY()
@@ -21,16 +22,7 @@ public:
 	UFlowNode_SaveCondition();
 	
 	UPROPERTY(EditAnywhere, Category="Choice")
-	FSaveCon
-	UPROPERTY(EditAnywhere, Category="Choice")
-	TSubclassOf<AOmegaLinearChoiceInstance> InstanceClass = AOmegaLinearChoiceInstance::StaticClass();
+	FOmegaSaveConditions Conditions;
 
-	UPROPERTY()
-	AOmegaLinearChoiceInstance* ChoiceInst;
-	UFUNCTION()
-	void LocalChoiceSelect(UOmegaLinearChoice* Choice, int32 Index);
-
-	
-	virtual bool CanUserAddOutput() const override;
 	virtual void ExecuteInput(const FName& PinName) override;
 };

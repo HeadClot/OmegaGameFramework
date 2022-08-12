@@ -2,3 +2,8 @@
 
 
 #include "Save/OmegaSaveCondition.h"
+
+bool UOmegaSaveCondition::CheckSaveCondition_Implementation(UOmegaSaveSubsystem* SaveSubsystem) const
+{
+	return true;
+}

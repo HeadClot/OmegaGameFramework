@@ -29,6 +29,7 @@ public:
 	UPROPERTY()
 	UOmegaLinearEventSubsystem* SubsystemRef;
 
-
+	UFUNCTION(BlueprintNativeEvent, Category="Choice")
+	bool IsChoiceAvailable() const;
 	
 };

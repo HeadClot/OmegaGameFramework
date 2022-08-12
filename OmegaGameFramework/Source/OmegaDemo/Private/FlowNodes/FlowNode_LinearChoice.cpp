@@ -10,6 +10,7 @@ UFlowNode_LinearChoice::UFlowNode_LinearChoice()
 	InputPins.Empty();
 	InputPins.Add(FFlowPin(TEXT("Begin")));
 	OutputPins.Empty();
+	NodeStyle = EFlowNodeStyle::Latent;
 #if WITH_EDITOR
 	Category = TEXT("GameFlow");
 #endif

@@ -16,6 +16,6 @@ class OMEGAGAMEFRAMEWORK_API UOmegaSaveCondition : public UObject
 
 public:
 
-	UFUNCTION(BlueprintImplementableEvent, Category="OmegaSaveCondition")
+	UFUNCTION(BlueprintNativeEvent, Category="OmegaSaveCondition")
 	bool CheckSaveCondition(UOmegaSaveSubsystem* SaveSubsystem) const;
 };
