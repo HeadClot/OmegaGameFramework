@@ -6,7 +6,6 @@
 #include "Subsystems/GameInstanceSubsystem.h"
 
 #include "OmegaSettings.h"
-#include "OmegaGameSettings.h"
 #include "Gameplay/OmegaGameMode.h"
 
 #include "OmegaGameManager.generated.h"
@@ -14,6 +13,17 @@
 class UOmegaSettings;
 class UOmegaGameSettings;
 class UOmegaGameplayModule;
+
+USTRUCT()
+struct FGameplayLogEntry
+{
+	GENERATED_BODY()
+
+	UPROPERTY()
+	FString Log;
+	UPROPERTY()
+	FString LogCategory;
+};
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnGlobalEvent, FName, Event, UObject*, Instigator);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnNewLevel, FString, LevelName, AOmegaGameMode*, GameMode);
@@ -30,8 +40,6 @@ protected:
 	virtual void Deinitialize() override;
 
 public:
-		UPROPERTY(BlueprintReadOnly, Category = "Ω|Settings")
-		class UOmegaGameSettings* CustomGameSettings;
 
 		// Temp class holder for settings
 		class TSubclassOf<UOmegaGameSettings> LocalSettingsClass;
@@ -86,4 +94,28 @@ public:
 	UFUNCTION()
 	void UpdatePlaytime();
 */
+
+	//##################################################################################################################
+	// LOG
+	//##################################################################################################################
+
+	UPROPERTY()
+	int32 MaxLogEntry;
+	
+	UFUNCTION(BlueprintCallable, Category="OmegaGameManager")
+	void AddGameplayLog(const FString& String, const FString& LogCategory);
+	
+	UFUNCTION(BlueprintCallable, Category="OmegaGameManager")
+	void ClearLog();
+	
+	UPROPERTY()
+	TArray<FGameplayLogEntry> LocalLog;
+	
+	UFUNCTION(BlueprintPure, Category="OmegaGameManager")
+	TArray<FString> GetGameplayLog();
+	UFUNCTION(BlueprintPure, Category="OmegaGameManager")
+	TArray<FString> GetGameplayLogOfCategory(const FString& LogCategory);
+	
+
+	
 };
