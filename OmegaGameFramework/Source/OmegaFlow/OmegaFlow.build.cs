@@ -1,9 +1,9 @@
 using UnrealBuildTool;
 using System.IO;
 
-public class OmegaAsync : ModuleRules
+public class OmegaFlow : ModuleRules
 {
-	public OmegaAsync(ReadOnlyTargetRules Target) : base(Target)
+	public OmegaFlow(ReadOnlyTargetRules Target) : base(Target)
 	{
         PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 

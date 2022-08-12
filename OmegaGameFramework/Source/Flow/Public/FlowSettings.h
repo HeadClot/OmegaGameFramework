@@ -11,7 +11,7 @@ class UFlowNode;
 /**
  *
  */
-UCLASS(Config = Game, defaultconfig, meta = (DisplayName = "Flow"))
+UCLASS(Config = Game, defaultconfig, meta = (DisplayName = "Omega: Flow"))
 class UFlowSettings final : public UDeveloperSettings
 {
 	GENERATED_UCLASS_BODY()

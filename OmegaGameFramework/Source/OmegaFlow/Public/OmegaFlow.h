@@ -3,9 +3,9 @@
 
 #include "Modules/ModuleManager.h"
 
-DECLARE_LOG_CATEGORY_EXTERN(OmegaAsync, All, All);
+DECLARE_LOG_CATEGORY_EXTERN(OmegaFlow, All, All);
 
-class FOmegaAsync : public IModuleInterface
+class FOmegaFlow : public IModuleInterface
 {
 	public:
 
