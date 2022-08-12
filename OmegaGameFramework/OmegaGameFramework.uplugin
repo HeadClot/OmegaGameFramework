@@ -55,7 +55,7 @@
 			]
 		},
 		{
-			"Name": "OmegaFlow",
+			"Name": "OmegaAsync",
 			"Type": "Runtime",
 			"LoadingPhase": "Default",
 			"PlatformAllowList": [
@@ -95,6 +95,16 @@
 			]
 		},
 		{
+			"Name" : "Flow",
+			"Type" : "Runtime",
+			"LoadingPhase" : "PreDefault"
+		},
+		{
+			"Name" : "FlowEditor",
+			"Type" : "Editor",
+			"LoadingPhase" : "Default"
+		},
+		{
 			"Name": "OmegaDemo",
 			"Type": "Runtime",
 			"LoadingPhase": "Default",
@@ -116,6 +126,10 @@
 		},
 		{
 			"Name": "ModularGameplay",
+			"Enabled": true
+		},
+		{
+			"Name": "AssetSearch",
 			"Enabled": true
 		}
 	]

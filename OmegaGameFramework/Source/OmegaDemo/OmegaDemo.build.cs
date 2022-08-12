@@ -11,6 +11,7 @@ public class OmegaDemo : ModuleRules
 			"OmegaGameFramework",
 			"OmegaSequence",
 			"OmegaData",
+			"Flow"
 			
 		});
  
