@@ -12,7 +12,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE(FAbilityCancled);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FAbilityFailed);
 
 UCLASS()
-class OMEGAASYNC_API UAsyncAction_ActivateAbility : public UBlueprintAsyncActionBase
+class OMEGAFLOW_API UAsyncAction_ActivateAbility : public UBlueprintAsyncActionBase
 {
 	GENERATED_BODY()
 

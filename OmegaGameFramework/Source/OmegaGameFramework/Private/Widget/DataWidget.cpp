@@ -213,6 +213,24 @@ void UDataWidget::SetSourceAsset(UObject* Asset)
 				}
 				GetBrushImage(Local_OverrideSize, Local_NewSize)->SetBrush(LocalBrush);
 			}
+
+			//Set Tooltip Asset
+			if(DefaultCreatedTooltip)
+			{
+				DefaultCreatedTooltip->OnOwnerSourceAssetChanged(Asset);
+
+				//update name widget
+				if(DefaultCreatedTooltip->GetAssetNameWidget())
+				{
+					DefaultCreatedTooltip->GetAssetNameWidget()->SetText(LocalName);
+				}
+				//update description widget
+				if(DefaultCreatedTooltip->GetAssetNameWidget())
+				{
+					DefaultCreatedTooltip->GetAssetDescriptionWidget()->SetText(LocalDesc);
+				}
+			}
+			
 		}//Finish widget setup
 	OnSourceAssetChanged(Asset);
 	}

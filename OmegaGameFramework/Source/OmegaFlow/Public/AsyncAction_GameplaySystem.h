@@ -12,7 +12,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FShutdown, FString, Flag);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnFailed);
 
 UCLASS()
-class OMEGAASYNC_API UAsyncAction_GameplaySystem : public UBlueprintAsyncActionBase
+class OMEGAFLOW_API UAsyncAction_GameplaySystem : public UBlueprintAsyncActionBase
 {
 	GENERATED_BODY()
 

@@ -11,7 +11,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnMenuClosed, FGameplayTagContaine
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnMenuFailed);
 
 UCLASS()
-class OMEGAASYNC_API UAsyncAction_Menu : public UBlueprintAsyncActionBase
+class OMEGAFLOW_API UAsyncAction_Menu : public UBlueprintAsyncActionBase
 {
 	GENERATED_BODY()
 
