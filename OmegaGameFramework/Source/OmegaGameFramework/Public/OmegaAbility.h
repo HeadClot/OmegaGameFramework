@@ -238,4 +238,13 @@ private:
 
 	UFUNCTION()
 	void RecieveFinish(bool bCancel);
+
+public:
+
+	//---------------------------------------------------------------------------------------------------------------//
+	// NOTIFY //
+	//---------------------------------------------------------------------------------------------------------------//
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnCombatantNotify(UCombatantComponent* OwningCombatant, FName Notify, const FString& Flag);
 };

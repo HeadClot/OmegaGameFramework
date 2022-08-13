@@ -122,6 +122,9 @@ public:
 	
 	UFUNCTION(BlueprintPure, Category="Tooltip")
 	UDataTooltip* GetDataTooltipWidget();
+
+	UFUNCTION()
+	void Local_UpdateTooltip(UObject* AssetRef);
 	
 	
 //BINDABLE WIDGETS

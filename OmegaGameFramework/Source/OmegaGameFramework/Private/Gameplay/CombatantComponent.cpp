@@ -1113,6 +1113,11 @@ void UCombatantComponent::ClearActiveTarget()
 	OnActiveTargetChanged.Broadcast(nullptr, false);
 }
 
+void UCombatantComponent::CombatantNotify(FName Notify, const FString& Payload)
+{
+	OnCombatantNotify.Broadcast(this, Notify, Payload);
+}
+
 ///////////////////
 /// Faction ////
 /////////////////

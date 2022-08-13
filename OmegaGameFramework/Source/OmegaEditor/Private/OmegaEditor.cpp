@@ -32,6 +32,7 @@ void FOmegaEditor::StartupModule()
 	RegisterDefaultEvent(AOmegaAbility, AbilityActivated);
 	RegisterDefaultEvent(AOmegaAbility, AbilityFinished);
 	RegisterDefaultEvent(AOmegaAbility, ActivatedTick);
+	RegisterDefaultEvent(AOmegaAbility, OnCombatantNotify);
 
 	//Effects
 	RegisterDefaultEvent(AOmegaGameplayEffect, EffectBeginPlay);
@@ -48,6 +49,10 @@ void FOmegaEditor::StartupModule()
 	RegisterDefaultEvent(UDataWidget, AddedToDataList);
 	RegisterDefaultEvent(UDataWidget, OnSourceAssetChanged);
 	RegisterDefaultEvent(UDataWidget, OnNewListOwner);
+	RegisterDefaultEvent(UDataWidget, GetNameTextWidget);
+	RegisterDefaultEvent(UDataWidget, GetDescriptionTextWidget);
+	RegisterDefaultEvent(UDataWidget, GetBrushImage);
+	RegisterDefaultEvent(UDataWidget, GetHoverAnimation);
 	
 	// ------- SETUP CATEGORY FACTORY ------- /////
 

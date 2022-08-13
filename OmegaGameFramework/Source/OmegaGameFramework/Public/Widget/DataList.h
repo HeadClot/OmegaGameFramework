@@ -88,6 +88,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Entry")
 	FString DefaultListFlag;
 
+	UPROPERTY(EditDefaultsOnly, Category="Tooltip")
+	TSubclassOf<UDataTooltip> OverrideEntryTooltip;
+	
 	// Read Only
 	UPROPERTY(BlueprintReadOnly, Category = "Entry")
 	TArray<UDataWidget*> Entries;

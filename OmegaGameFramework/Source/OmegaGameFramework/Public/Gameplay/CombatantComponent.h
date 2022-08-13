@@ -46,6 +46,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnTargetRemoved, UCombatantComponen
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnAddedAsTarget, UCombatantComponent*, Instigator);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnRemovedAsTarget, UCombatantComponent*, Instigator);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnActiveTargetChanged, UCombatantComponent*, ActiveTarget, bool, Valid);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(FOnCombatantNotify, UCombatantComponent*, Combatant, FName, Notify, const FString&, Flag);
 
 
 #define PrintError(ErrorText) \
@@ -452,6 +453,17 @@ public:
 
 	UPROPERTY(BlueprintAssignable)
 	FOnCombatantLevelChange OnLevelChanged;
+
+	////////////////////////////////////
+	////////// -- NOTIFIES -- //////////
+	///////////////////////////////////
+
+	UFUNCTION(BlueprintCallable, Category="Combatant|Notify", meta=(AdvancedDisplay="Flag"))
+	void CombatantNotify(FName Notify, const FString& Flag);
+
+	UPROPERTY(BlueprintAssignable)
+	FOnCombatantNotify OnCombatantNotify;
 };
+
 
 

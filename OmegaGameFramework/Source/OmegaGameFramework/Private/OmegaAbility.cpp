@@ -69,6 +69,8 @@ void AOmegaAbility::BeginPlay()
 	}
 	
 	SetInputEnabledForOwner(true);
+
+	CombatantOwner->OnCombatantNotify.AddDynamic(this, &AOmegaAbility::OnCombatantNotify);
 }
 
 void AOmegaAbility::EndPlay(const EEndPlayReason::Type EndPlayReason)

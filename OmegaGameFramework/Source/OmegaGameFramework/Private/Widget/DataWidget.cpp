@@ -59,6 +59,8 @@ void UDataWidget::NativeConstruct()
 
 	DefaultCreatedTooltip = CreateWidget<UDataTooltip>(this, LocalTooltipClass);
 	DefaultCreatedTooltip->SetOwningWidget(this);
+
+	Local_UpdateTooltip(ReferencedAsset);
 }
 
 FString UDataWidget::GetAssetLabel()
@@ -215,21 +217,7 @@ void UDataWidget::SetSourceAsset(UObject* Asset)
 			}
 
 			//Set Tooltip Asset
-			if(DefaultCreatedTooltip)
-			{
-				DefaultCreatedTooltip->OnOwnerSourceAssetChanged(Asset);
-
-				//update name widget
-				if(DefaultCreatedTooltip->GetAssetNameWidget())
-				{
-					DefaultCreatedTooltip->GetAssetNameWidget()->SetText(LocalName);
-				}
-				//update description widget
-				if(DefaultCreatedTooltip->GetAssetNameWidget())
-				{
-					DefaultCreatedTooltip->GetAssetDescriptionWidget()->SetText(LocalDesc);
-				}
-			}
+			Local_UpdateTooltip(Asset);
 			
 		}//Finish widget setup
 	OnSourceAssetChanged(Asset);
@@ -240,4 +228,32 @@ void UDataWidget::SetSourceAsset(UObject* Asset)
 UDataTooltip* UDataWidget::GetDataTooltipWidget()
 {
 	return DefaultCreatedTooltip;
+}
+
+void UDataWidget::Local_UpdateTooltip(UObject* AssetRef)
+{
+	if(!AssetRef)
+	{
+		return;
+	}
+	if(DefaultCreatedTooltip)
+	{
+		DefaultCreatedTooltip->OnOwnerSourceAssetChanged(AssetRef);
+		
+		FText LocalDesc;
+		FText LocalName;
+			
+		IDataInterface_General::Execute_GetGeneralDataText(AssetRef, AssetLabel, this, LocalName, LocalDesc);
+		
+		//update name widget
+		if(DefaultCreatedTooltip->GetAssetNameWidget())
+		{
+			DefaultCreatedTooltip->GetAssetNameWidget()->SetText(LocalName);
+		}
+		//update description widget
+		if(DefaultCreatedTooltip->GetAssetNameWidget())
+		{
+			DefaultCreatedTooltip->GetAssetDescriptionWidget()->SetText(LocalDesc);
+		}
+	}
 }

@@ -75,6 +75,11 @@ UDataWidget* UDataList::AddAssetToList(UObject* Asset, FString Flag)
 	//Create Entry Widget
 	UDataWidget* TempEntry = CreateWidget<UDataWidget>(this, EntryClass);
 
+	if(OverrideEntryTooltip)
+	{
+		TempEntry->DefaultTooltipWidget = OverrideEntryTooltip;
+	}
+	
 	// Do not add if hidden
 	if(TempEntry->IsEntityHidden(Asset))
 	{
