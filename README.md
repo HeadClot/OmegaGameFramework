@@ -11,4 +11,7 @@ Omega is an scalable, esy-to-use gameplay framework plugin for Unreal Engine 4 &
 ![Image](https://cdn1.epicgames.com/ue/product/Screenshot/OmegaPreferences-1920x1080-10ec73a744b38f51fa3dd0d38f6367fc.png?resize=1&w=1920)
 ![Image](https://cdn1.epicgames.com/ue/product/Screenshot/OmegaSave-1920x1080-9b5ea03e01564d2b63e992a1b2dd9df6.png?resize=1&w=1920)
 
-
+### External Plugins
+OGF intigrates and owes much credit to these MIT projects:
+* [Flow Graph Plugin](https://github.com/MothCocoon/FlowGraph)
+* [Blueprint File SDK](https://github.com/IncantaGames/unreal-bp-file-sdk)
